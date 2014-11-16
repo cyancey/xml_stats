@@ -1,0 +1,55 @@
+%h1
+  = @today.strftime('Today - %B ')
+  %span>
+    = "#{@today.strftime('%-d').to_i.ordinalize}, #{@today.strftime('%Y')}"
+%h3
+  NBA Games
+- @nba_games.each do |game|
+  %p{class: "#{(game.home_team == 'Washington Wizards' || game.away_team == 'Washington Wizards') ? 'wizards' : ''}"}
+    = "#{game.start_date_time.strftime('%l:%M%P')} - #{game.away_team} @ #{game.home_team}"
+.standings
+  %h3.title
+    East Standings
+  %table
+    %tr
+      %th
+        Rank
+      %th
+        Team
+      %th
+        Games Back
+      %th
+        Playoff Seed
+    - @east_standings.each do |standing|
+      %tr{class: "#{standing.team == 'Washington Wizards' ? 'wizards' : ''}"}
+        %td
+          =standing.rank
+        %td
+          =standing.team
+        %td
+          =standing.games_back
+        %td
+          =standing.playoff_seed
+.standings
+  %h3.title
+    West Standings
+  %table
+    %tr
+      %th
+        Rank
+      %th
+        Team
+      %th
+        Games Back
+      %th
+        Playoff Seed
+    - @west_standings.each do |standing|
+      %tr
+        %td
+          =standing.rank
+        %td
+          =standing.team
+        %td
+          =standing.games_back
+        %td
+          =standing.playoff_seed
