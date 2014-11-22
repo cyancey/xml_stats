@@ -1,6 +1,6 @@
 %h1
   = @today.strftime('Today - %B ')
-  %span>
+  %span
     = "#{@today.strftime('%-d').to_i.ordinalize}, #{@today.strftime('%Y')}"
 %h3
   NBA Games
@@ -17,6 +17,8 @@
       %th
         Team
       %th
+        Record
+      %th
         Games Back
       %th
         Playoff Seed
@@ -26,6 +28,8 @@
           =standing.rank
         %td
           =standing.team
+        %td
+          ="#{standing.wins} - #{standing.losses}"
         %td
           =standing.games_back
         %td
@@ -40,6 +44,8 @@
       %th
         Team
       %th
+        Record
+      %th
         Games Back
       %th
         Playoff Seed
@@ -49,6 +55,8 @@
           =standing.rank
         %td
           =standing.team
+        %td
+          ="#{standing.wins} - #{standing.losses}"
         %td
           =standing.games_back
         %td
